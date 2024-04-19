@@ -4,10 +4,6 @@ require "Database.php";
 $config = require("./config.php");
 $db = new Database($config);
 
-
-
-//if ($_SERVER["REQUEST_METHOD"] == "POST" && trim($_POST["title"]) != "" && $_POST["category-id"] <= 3 && strlen($_POST["title"]) <= 255) {
-    // dd("Pos");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = [];
 
@@ -15,17 +11,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors["title"] = "no title or too long";
     }
 
-    if(!Validator::number($_POST["category-id"], 1, 255)) {
-        $errors["category-id"] = "wrong category-id";
+    if(!Validator::string($_POST["writer"], 1, 255)) {
+        $errors["writer"] = "Not a writer";
     }
+
+    if(!Validator::number($_POST["releasedate"], 1, 255)) {
+        $errors["releasedate"] = "Not a valid release date";
+    }
+
+    if(!Validator::string($_POST["availability"], 1, 255)) {
+        $errors["availability"] = "Not a available";
+    }
+
     if (empty($errors)) {
 
-
-    $query = "INSERT INTO posts (title, category_id) 
-              VALUES (:title, :category_id);";
+    $query = "INSERT INTO books (title, writer, releasedate, availability) 
+              VALUES (:title, :writer, :releasedate, :availability);";
               $params = [
                   ":title" => $_POST["title"],
-                  ":category_id" => $_POST["category-id"]
+                  ":releasedate" => $_POST["releasedate"],
+                  ":releasedate" => $_POST["releasedate"],
+                  ":availability" => $_POST["availability"]
               ];
               $db->execute($query, $params);
               header("Location: /");
@@ -33,5 +39,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 } 
 
-$title = "Create stuff";
-require "views/posts/create.view.php";
+$title = "Create a book";
+require "views/books/create.view.php";

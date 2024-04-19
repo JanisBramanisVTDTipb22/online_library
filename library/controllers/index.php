@@ -9,54 +9,52 @@ if(isset($_GET["id"]))
     $params = [];
     if($id == "all")
     {
-        $query = "SELECT * FROM posts";
+        $query = "SELECT * FROM books";
     }else if(is_numeric($id))
     {
         $id = $_GET["id"];
-        $query = "SELECT * FROM posts WHERE id=:id";
+        $query = "SELECT * FROM books WHERE id=:id";
         $params = [":id" => $id];
     }else if($id != "meow")
     {
         if($id == "")
         {
-            $query = "SELECT * FROM posts"; 
+            $query = "SELECT * FROM books"; 
         }else
         {
             echo "Not found " . $id;
-            $query = "SELECT * FROM posts"; 
+            $query = "SELECT * FROM books"; 
         }
     }else
     {
-        $query = "SELECT * FROM posts"; 
+        $query = "SELECT * FROM books"; 
     }
 }
 
-if(isset($_GET["category_name"]))
+if(isset($_GET["writer_name"]))
 {
-    if($_GET["category_name"] == "show_all" || $_GET["category_name"] == ""){
-        $categories = $_GET["categroy_name"];
+    if($_GET["writer_name"] == "show_all" || $_GET["writer_name"] == ""){
+        $writers = $_GET["writer_name"];
         $params = [];
-        $query = "SELECT * FROM posts";
+        $query = "SELECT * FROM books";
     }else{
-        $categories = $_GET["cat_name"];
+        $writers = $_GET["cat_name"];
         $params = [];
-        $query = "SELECT * FROM posts WHERE category_id = :category_name";
-        $params = [":category_name" => $categories];
+        $query = "SELECT * FROM books WHERE writer = :writer_name";
+        $params = [":writer_name" => $writers];
     }
 };
 
-
 if(isset($query) || isset($params) ){
     $db = new DataBase($config);
-    $posts = $db->execute($query, $params)->fetchALL();
+    $books = $db->execute($query, $params)->fetchALL();
 }else{
-    $query = "SELECT * FROM posts"; 
+    $query = "SELECT * FROM books"; 
     $params = [];
     $db = new DataBase($config);
-    $posts = $db->execute($query, $params)->fetchALL();
+    $books = $db->execute($query, $params)->fetchALL();
 }
 
-
 $title = "NO!";
-require "views/posts/index.view.php";
+require "views/books/index.view.php";
 ?>

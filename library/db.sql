@@ -14,3 +14,9 @@ VALUES
 ("The Algorithmic Odyssey", "Ada Code", "2026-07-12", "Available for pre-order"),
 ("Syntax and Serendipity", "Harper Compiler", "2027-03-20", "Out of stock"),
 ("The Index Saga", "Olivia Key", "2025-09-10", "Out of stock");
+
+CREATE TABLE users (
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+email VARCHAR(350) NOT NULL, 
+password VARCHAR(255) NOT NULL
+);
