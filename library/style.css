@@ -6,14 +6,27 @@ h1 {
   font-family: sans-serif;
 }
 
+label {
+  color: white;
+  font-family: sans-serif;
+}
+
 p {
   color: white;
-  font-family: cursive;
+  font-family: sans-serif;
 }
 
 li {
   color: white;
   font-size: 0.5px;
+  font-family: sans-serif;
+}
+
+button {
+  color: white;
+  background-color: midnightblue;
+  font-family: sans-serif;
+
 }
 
 nav {
@@ -22,6 +35,8 @@ nav {
   display: flex;
   align-items: center;
   gap: 20px;
+  color: white;
+  font-family: sans-serif;
 }
 
 label {

@@ -1,18 +1,14 @@
 <?php
-
 auth();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION = [];
     session_destroy();
-
-$params = session_get_cookie_params();
-setcookie(session_name(), '', time() - 4200,
-    $params["path"], $params["domain"],
-    $params["secure"], $params["httponly"]
-);
+    session_regenerate_id();
+    setcookie(session_name(), '', time() - 1);
     header("Location: /login");
-    die();
+    exit;
 }
 
 require "views/books/logout.view.php";
+?>

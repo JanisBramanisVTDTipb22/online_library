@@ -1,28 +1,26 @@
-<?php 
-require "views/components/head.php";
-require "views/components/navbar.php";
-?>
+<?php require "views/components/head.php"; ?>
+<?php require "views/components/navbar.php"; ?>
 
-<h1>register</h1>
+<h1>Register</h1>
 
 <form method="POST">
     <label>
-        email:
+        Email:
         <input name="email">
+        <?php if(isset($errors["email"])): ?>
+            <span class="error"><?= $errors["email"] ?></span>
+        <?php endif; ?>
     </label>
-    <?php if(isset($errors["email"])) {?>
-    <?php } ?>
-</form>
-<form method="POST">
+    <br>
     <label>
-        Password <span class=explenation>(jābūt 8 rakstzīmēm, 1 lielam, 1 mazam, 1 īpašam simbolam un 1 burtam)</span>:
-        <input name="password" />
+        Password: <span class="explanation">(should be 8 characters long, contain at least 1 uppercase letter, 1 lowercase letter, 1 digit, and 1 special character)</span>:
+        <input name="password" type="password"/>
+        <?php if(isset($errors["password"])): ?>
+            <span class="error"><?= $errors["password"] ?></span>
+        <?php endif; ?>
     </label>
-    <button>register</button>
+    <br>
+    <button type="submit">Register</button>
 </form>
 
-
-
-<?php 
-require "views/components/footer.php";
-?>
+<?php require "views/components/footer.php"; ?>
