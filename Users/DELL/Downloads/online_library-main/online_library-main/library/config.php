@@ -4,6 +4,6 @@ return [
     "host" => "localhost",
     "dbname" => "public_library",
     "user" => "root",
-    "password" => "",
+    "password" => "root",
     "charset" => "utf8mb4"
 ];
