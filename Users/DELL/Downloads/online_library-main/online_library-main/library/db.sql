@@ -1,9 +1,16 @@
-CREATE DATABASE public_library;
-use DATABASE public_library;
+-- CREATE DATABASE public_library;
+use public_library;
 
+-- Drop the existing books table
+DROP TABLE IF EXISTS books;
+
+-- Recreate the books table with the desired structure
 CREATE TABLE books (
-	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	title VARCHAR(255) NOT NULL
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    writer VARCHAR(255) NOT NULL,
+    releasedate VARCHAR(255) NOT NULL,
+    availability VARCHAR(255) NOT NULL
 );
 
 INSERT INTO books
@@ -24,5 +31,5 @@ password VARCHAR(255) NOT NULL
 INSERT INTO users 
 (email, password)
 VALUES
-("josifs53@gmail.com", "priekskars"),
-("vezis12@gmail.com", "skriesana")
+("josifs53@gmail.com", "Priekskars123$"),
+("vezis12@gmail.com", "Skriesana321!")
